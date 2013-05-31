@@ -9,6 +9,7 @@ Data: 28.05.2013    File: salut.py
 """
 import os
 import sys
+import tkFileDialog
 from Tkinter import *
 
 fereastra = Tk()
@@ -34,12 +35,19 @@ def about():
 def quitWindow(root):
     root.destroy()
 
+def openfile():
+    return tkFileDialog.askopenfile(mode="r")
+    #print(filename)
+
+def asksaveasfile():
+    return tkFileDialog.asksaveasfile(mode="w")
+
 menubar = Menu(fereastra)
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="New", command=nimic)
-filemenu.add_command(label="Open", command=inchide)
+filemenu.add_command(label="Open", command=openfile)
 filemenu.add_command(label="Save", command=inchide)
-filemenu.add_command(label="Save as...", command=inchide)
+filemenu.add_command(label="Save as...", command=asksaveasfile)
 filemenu.add_command(label="Close", command=inchide)
 
 filemenu.add_separator()
